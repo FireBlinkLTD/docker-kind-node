@@ -1,0 +1,11 @@
+version: '3'
+services:  
+  plugin:
+    build: .
+    privileged: true
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  
+      - ./test:/test
+    working_dir: /test
+    command: bash test.sh
