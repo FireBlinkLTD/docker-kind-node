@@ -5,7 +5,8 @@ Docker image with preinstalled [KinD](https://kind.sigs.k8s.io/) that is based o
 Additionally contains:
 - kubectl
 - kubeadm
-- helm
+- helm (v3)
+- helm_v2 (v2)
 
 # Purpose
 
