@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:lts-alpine
 
 # Add
 RUN apk add --no-cache \
@@ -8,7 +8,7 @@ RUN apk add --no-cache \
       docker
 
 # Install kubectl
-ENV KUBERNETES_VERSION="1.17.0"
+ENV KUBERNETES_VERSION="1.19.0"
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBERNETES_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl
 
@@ -16,7 +16,8 @@ RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBERNE
 RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
 # Install kind (kubernetes in docker)
-RUN curl -Lo /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-linux-amd64 && \
+ENV KIND_VERSION="0.8.1"
+RUN curl -Lo /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-linux-amd64 && \
       chmod +x /usr/local/bin/kind
 
 # Verify that everything has been installed

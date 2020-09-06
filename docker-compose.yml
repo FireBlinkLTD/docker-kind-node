@@ -1,6 +1,6 @@
 version: '3'
 services:  
-  plugin:
+  kind:
     build: .
     privileged: true
     network_mode: host
